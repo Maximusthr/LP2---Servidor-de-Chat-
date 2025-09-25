@@ -1,0 +1,28 @@
+# Arquivos objeto
+*.o
+
+# Diretórios de build
+build/
+bin/
+
+# Executáveis
+log_tester
+logger_test
+chat_server
+
+# Arquivos de log de teste
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-*
+
+# OS específicos
+.DS_Store
+Thumbs.db

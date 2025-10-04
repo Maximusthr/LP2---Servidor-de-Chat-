@@ -1,18 +1,26 @@
-# Sistema de Chat - Projeto LP2
+# Sistema de Chat - Projeto LPII
 
-Sistema de chat cliente-servidor multi-threaded desenvolvido em C++ para a disciplina de Linguagem de Programação II (LP2).
+Sistema de chat cliente-servidor multi-threaded desenvolvido em C++ para a disciplina de Linguagem de Programação II (LPII).
 
 ## 📋 Status do Projeto
 
-### ✅ Implementado
-- **Sistema de Logging Thread-Safe** (Tema A - Etapa 1)
-- **Arquitetura inicial do servidor de chat**
-- **Classes base para comunicação cliente-servidor**
+### ✅ Etapa 1: Arquitetura e Logging (Concluída)
 
-### 🔄 Em Desenvolvimento
-- Implementação completa das classes `Server` e `ClientHandler`
-- Integração do sistema de logging com o servidor
-- Testes de comunicação cliente-servidor
+  - **Sistema de Logging Thread-Safe**: Biblioteca `libtslog` implementada e testada.
+  - **Arquitetura Inicial**: Definição das classes `Server` e `ClientHandler` e diagramas de sequência.
+
+### ✅ Etapa 2: Protótipo Funcional (Concluída)
+
+  - **Servidor TCP Funcional**: Implementação da lógica de `socket`, `bind`, `listen` e `accept`.
+  - **Cliente CLI Funcional**: Implementação de um cliente de terminal que envia e recebe mensagens.
+  - **Comunicação em Rede**: Mensagens enviadas por um cliente são retransmitidas (broadcast) para os demais.
+  - **Gerenciamento de Clientes**: Servidor gerencia a conexão, desconexão e identificação de múltiplos clientes.
+  - **Logging Integrado**: Eventos do servidor (conexões, mensagens) são registrados pela `libtslog`.
+
+### 🔄 Próxima Etapa: Finalização e Relatório
+
+  - Refinamento do código e tratamento de casos extremos.
+  - Elaboração do relatório final, incluindo a análise de concorrência com IA.
 
 ## 🏗️ Arquitetura
 
@@ -20,139 +28,107 @@ O projeto segue uma arquitetura modular composta por:
 
 ### Componentes Principais
 
-1. **Logger** - Sistema de logging thread-safe
-   - Implementa padrão Singleton
-   - Usa padrão Monitor (Producer-Consumer)
-   - Thread-safe para ambientes concorrentes
+1.  **Logger**: Sistema de logging thread-safe (`libtslog`).
+2.  **Server**: Orquestra a lógica do chat, aceita conexões e gerencia o broadcast.
+3.  **ClientHandler**: Objeto com thread dedicada para gerenciar a comunicação com um único cliente.
+4.  **Cliente**: Aplicação de terminal que se conecta ao servidor, envia e recebe mensagens.
 
-2. **Server** - Servidor principal
-   - Gerencia conexões TCP
-   - Controla broadcast de mensagens
-   - Mantém lista de clientes conectados
+*(O diagrama de sequência detalhado está no arquivo `docs/ARQUITETURA.md`)*
 
-3. **ClientHandler** - Manipulador de cliente
-   - Uma thread por cliente conectado
-   - Gerencia comunicação bidirecional
-   - Usa smart pointers para gerenciamento de memória
+## 🧪 Testes e Execução
 
-### Diagrama de Arquitetura
+### Como Compilar
 
-```
-┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│     Cliente     │◄──►│ ClientHandler   │◄──►│     Server      │
-│                 │    │  (Thread)       │    │                 │
-└─────────────────┘    └─────────────────┘    └─────────────────┘
-                                │                       │
-                                │                       │
-                                ▼                       ▼
-                       ┌─────────────────┐    ┌─────────────────┐
-                       │     Logger      │◄───│  Outros Logs    │
-                       │  (Thread-Safe)  │    │                 │
-                       └─────────────────┘    └─────────────────┘
-```
+O `Makefile` foi configurado para compilar o servidor e o cliente.
 
-## 🧪 Testes Implementados
-
-### Teste de Stress do Logger
-- **Arquivo**: `main.cpp`
-- **Descrição**: Testa o sistema de logging com múltiplas threads
-- **Cenário**: 10 threads simultâneas gerando 100 logs cada
-- **Verificação**: Thread-safety e integridade dos logs
-
-#### Como executar:
 ```bash
-make                    # Compila o projeto
-./bin/test_logger      # Executa o teste de stress
+# Compila ambos, servidor e cliente
+make all
+
+# Compila apenas o servidor
+make server
+
+# Compila apenas o cliente
+make client
 ```
 
-#### Saída esperada:
-- Arquivo `test_log.txt` com 1001 mensagens (1000 das threads + 1 da main)
-- Logs organizados cronologicamente
-- Formato: `[TIMESTAMP] [LEVEL] MESSAGE`
+### Como Executar
+
+É necessário ter dois ou mais terminais abertos.
+
+1.  **Inicie o Servidor (em um terminal):**
+    ```bash
+    ./bin/chat_server <PORTA>
+    # Exemplo: ./bin/chat_server 8080
+    ```
+2.  **Inicie os Clientes (em outros terminais):**
+    ```bash
+    ./bin/chat_client <IP_DO_SERVIDOR> <PORTA>
+    # Exemplo: ./bin/chat_client 127.0.0.1 8080
+    ```
+
+### Scripts de Simulação
+
+Para facilitar os testes, dois scripts estão disponíveis:
+
+1.  **Simulação de Múltiplos Clientes (`start_clients.sh`):**
+    Abre várias janelas de terminal, cada uma com um cliente.
+    ```bash
+    # Primeiro, torne-o executável (apenas uma vez)
+    chmod +x start_clients.sh
+
+    # Inicie o servidor (em um terminal)
+    ./bin/chat_server 8080
+
+    # Execute para abrir 3 clientes
+    ./start_clients.sh 127.0.0.1 8080
+    ```
+2.  **Robô de Chat Automatizado (`bot.sh`):**
+    Conecta um cliente que envia mensagens pré-programadas e depois fica escutando.
+    ```bash
+    # Primeiro, torne-o executável (apenas uma vez)
+    chmod +x bot.sh
+
+    # Inicie o servidor (em um terminal)
+    ./bin/chat_server 8080
+
+    # Execute o robô
+    ./bot.sh 127.0.0.1 8080
+    ```
 
 ## 📁 Estrutura do Projeto
 
 ```
 ├── src/                          # Código fonte principal
 │   ├── logger/                   # Sistema de logging
-│   │   ├── Logger.hpp           # Interface do Logger
-│   │   └── Logger.cpp           # Implementação do Logger
-│   └── server/                   # Lógica do servidor de chat
-│       ├── Server.hpp           # Interface do servidor
-│       └── ClientHandler.hpp    # Interface do manipulador de cliente
-├── tests/                       # Códigos de teste
-│   └── test_logger.cpp          # Teste de estresse para o Logger
-├── docs/                        # Documentação
-│   └── Arquitetura.md          # Documentação da arquitetura
-├── build/                       # Arquivos compilados (ignorado pelo Git)
-│   └── obj/                    # Arquivos objeto
-├── bin/                         # Executáveis (ignorado pelo Git)
-├── .gitignore                   # Arquivos ignorados pelo Git
-├── Makefile                     # Sistema de build
-├── README.md                    # Este arquivo
-└── LICENSE                      # Licença do projeto
+│   │   ├── Logger.hpp
+│   │   └── Logger.cpp
+│   ├── server/                   # Lógica do servidor de chat
+│   │   ├── Server.hpp
+│   │   ├── Server.cpp
+│   │   ├── ClientHandler.hpp
+│   │   └── ClientHandler.cpp
+│   ├── client/                   # Lógica do cliente de chat
+│   │   └── client.cpp
+│   └── server_main.cpp           # Ponto de entrada (main) do 
+├── tests/                        # Códigos de teste
+│   └── test_logger.cpp           # Teste de estresse para o Logger
+├── docs/                         # Documentação
+│   └── ARQUITETURA.md
+|── logs                          # Logs gerados
+├── build/                        # (Ignorado pelo Git)
+├── bin/                          # (Ignorado pelo Git)
+├── .gitignore
+├── Makefile
+├── README.md
+|── bot.sh                        # Script de teste
+├── start_clients.sh              # Script de teste
+└── LICENSE
 ```
-
-## 🛠️ Compilação
-
-### Pré-requisitos
-- Compilador C++ com suporte a C++11 ou superior
-- Make
-
-### Comandos
-```bash
-# Compilar o projeto
-make                    # Compila o teste do Logger (padrão)
-
-# Executar
-./bin/test_logger      # Executa o teste de stress
-
-# Utilitários
-make clean             # Remove arquivos compilados
-```
-
 
 ## 📚 Padrões de Design Utilizados
 
-### 1. Singleton Pattern
-- **Classe**: `Logger`
-- **Propósito**: Garantir instância única do sistema de logging
-- **Benefício**: Acesso global consistente
+1.  **Singleton Pattern** (`Logger`): Garante uma instância única e acesso global ao sistema de logging.
+2.  **Monitor Pattern (Producer-Consumer)** (`Logger`): Coordena o acesso concorrente à fila de logs de forma segura e eficiente.
+3.  **RAII (Resource Acquisition Is Initialization)** (`Server`, `ClientHandler`): Garante o gerenciamento automático de recursos como sockets e threads, prevenindo vazamentos.
 
-### 2. Monitor Pattern (Producer-Consumer)
-- **Classe**: `Logger`
-- **Componentes**: Mutex + Condition Variable + Queue
-- **Propósito**: Coordenar acesso thread-safe à fila de mensagens
-- **Benefício**: Performance otimizada com sincronização segura
-
-### 3. RAII (Resource Acquisition Is Initialization)
-- **Classes**: `ClientHandler`, `Server`
-- **Propósito**: Gerenciamento automático de recursos (sockets, threads)
-- **Benefício**: Prevenção de vazamentos de memória e recursos
-
-## 🎯 Próximas Etapas
-
-1. **Implementação completa do Server**
-   - Socket TCP binding e listening
-   - Accept de conexões
-   - Gerenciamento da lista de clientes
-
-2. **Implementação completa do ClientHandler**
-   - Loop de recebimento de mensagens
-   - Envio de mensagens
-   - Desconexão graceful
-
-3. **Integração Logger + Servidor**
-   - Logs de conexão/desconexão
-   - Logs de mensagens
-   - Logs de erros
-
-4. **Cliente de teste**
-   - Interface CLI para envio/recebimento
-   - Múltiplos clientes simultâneos
-
-## 👥 Equipe
-
-- **Desenvolvedor**: Arthur
-- **Disciplina**: LP2 - Linguagem de Programação II
-- **Instituição**: UFPB

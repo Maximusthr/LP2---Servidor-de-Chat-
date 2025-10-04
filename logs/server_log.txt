@@ -1,0 +1,90 @@
+2025-10-03 20:47:51 [INFO] - Servidor criado na porta 8080
+2025-10-03 20:47:51 [INFO] - Socket do servidor criado.
+2025-10-03 20:47:51 [INFO] - Servidor fez o bind na porta 8080
+2025-10-03 20:47:51 [INFO] - Servidor iniciado e escutando por conexões...
+2025-10-03 20:47:51 [INFO] - Thread de aceitação de clientes iniciada.
+2025-10-03 20:48:01 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:48:07 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:48:08 [INFO] - Mensagem recebida do socket 6: oi
+2025-10-03 20:48:08 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: oi
+2025-10-03 20:48:12 [INFO] - Mensagem recebida do socket 5: funciona?
+2025-10-03 20:48:12 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: funciona?
+2025-10-03 20:48:21 [INFO] - Mensagem recebida do socket 6: sim
+2025-10-03 20:48:21 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: sim
+2025-10-03 20:48:26 [INFO] - Mensagem recebida do socket 5: /quit
+2025-10-03 20:48:26 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: /quit
+2025-10-03 20:48:34 [INFO] - Mensagem recebida do socket 6: fim
+2025-10-03 20:48:34 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: fim
+2025-10-03 20:48:34 [INFO] - Cliente no socket 5 desconectou.
+2025-10-03 20:48:34 [INFO] - Handler para o socket 5 destruído.
+2025-10-03 20:48:34 [INFO] - Cliente no socket 5 removido da lista.
+2025-10-03 20:48:44 [INFO] - Mensagem recebida do socket 6: oi
+2025-10-03 20:48:44 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: oi
+2025-10-03 20:48:50 [INFO] - Mensagem recebida do socket 6: /quit
+2025-10-03 20:48:50 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: /quit
+2025-10-03 20:49:24 [INFO] - Servidor finalizado.
+2025-10-03 20:49:24 [INFO] - Handler para o socket 6 destruído.
+2025-10-03 20:51:51 [INFO] - Servidor criado na porta 8080
+2025-10-03 20:51:51 [INFO] - Socket do servidor criado.
+2025-10-03 20:51:51 [INFO] - Servidor fez o bind na porta 8080
+2025-10-03 20:51:51 [INFO] - Servidor iniciado e escutando por conexões...
+2025-10-03 20:51:51 [INFO] - Thread de aceitação de clientes iniciada.
+2025-10-03 20:52:06 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:52:06 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:52:06 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:52:09 [INFO] - Mensagem recebida do socket 7: teste
+2025-10-03 20:52:09 [INFO] - Fazendo broadcast da mensagem: [Cliente 7]: teste
+2025-10-03 20:52:12 [INFO] - Mensagem recebida do socket 6: ola
+2025-10-03 20:52:12 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: ola
+2025-10-03 20:52:15 [INFO] - Mensagem recebida do socket 5: script funcionando
+2025-10-03 20:52:15 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: script funcionando
+2025-10-03 20:52:18 [INFO] - Mensagem recebida do socket 7: /quit
+2025-10-03 20:52:18 [INFO] - Fazendo broadcast da mensagem: [Cliente 7]: /quit
+2025-10-03 20:52:20 [INFO] - Mensagem recebida do socket 5: saiu
+2025-10-03 20:52:20 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: saiu
+2025-10-03 20:52:20 [INFO] - Cliente no socket 7 desconectou.
+2025-10-03 20:52:20 [INFO] - Handler para o socket 7 destruído.
+2025-10-03 20:52:20 [INFO] - Cliente no socket 7 removido da lista.
+2025-10-03 20:52:22 [INFO] - Mensagem recebida do socket 6: sim
+2025-10-03 20:52:22 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: sim
+2025-10-03 20:52:23 [INFO] - Mensagem recebida do socket 6: /quit
+2025-10-03 20:52:23 [INFO] - Fazendo broadcast da mensagem: [Cliente 6]: /quit
+2025-10-03 20:52:25 [INFO] - Mensagem recebida do socket 5: oii
+2025-10-03 20:52:25 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: oii
+2025-10-03 20:52:25 [INFO] - Cliente no socket 6 desconectou.
+2025-10-03 20:52:25 [INFO] - Handler para o socket 6 destruído.
+2025-10-03 20:52:25 [INFO] - Cliente no socket 6 removido da lista.
+2025-10-03 20:52:27 [INFO] - Mensagem recebida do socket 5: /quit
+2025-10-03 20:52:27 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: /quit
+2025-10-03 20:52:32 [INFO] - Servidor finalizado.
+2025-10-03 20:52:32 [INFO] - Handler para o socket 5 destruído.
+2025-10-03 20:55:58 [INFO] - Servidor criado na porta 8080
+2025-10-03 20:55:58 [INFO] - Socket do servidor criado.
+2025-10-03 20:55:58 [INFO] - Servidor fez o bind na porta 8080
+2025-10-03 20:55:58 [INFO] - Servidor iniciado e escutando por conexões...
+2025-10-03 20:55:58 [INFO] - Thread de aceitação de clientes iniciada.
+2025-10-03 20:56:06 [INFO] - Servidor finalizado.
+2025-10-03 20:56:13 [INFO] - Servidor criado na porta 8080
+2025-10-03 20:56:13 [INFO] - Socket do servidor criado.
+2025-10-03 20:56:13 [INFO] - Servidor fez o bind na porta 8080
+2025-10-03 20:56:13 [INFO] - Servidor iniciado e escutando por conexões...
+2025-10-03 20:56:13 [INFO] - Thread de aceitação de clientes iniciada.
+2025-10-03 20:56:22 [INFO] - Cliente conectado do IP: 127.0.0.1
+2025-10-03 20:56:22 [INFO] - Mensagem recebida do socket 5: Olá, eu sou o robô de script!
+
+2025-10-03 20:56:22 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: Olá, eu sou o robô de script!
+
+2025-10-03 20:56:24 [INFO] - Mensagem recebida do socket 5: Estou testando o servidor a partir de um script .sh.
+
+2025-10-03 20:56:24 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: Estou testando o servidor a partir de um script .sh.
+
+2025-10-03 20:56:27 [INFO] - Mensagem recebida do socket 5: Aparentemente, tudo está funcionando como esperado.
+
+2025-10-03 20:56:27 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: Aparentemente, tudo está funcionando como esperado.
+
+2025-10-03 20:56:29 [INFO] - Mensagem recebida do socket 5: Agora ficarei em modo de escuta.
+
+2025-10-03 20:56:29 [INFO] - Fazendo broadcast da mensagem: [Cliente 5]: Agora ficarei em modo de escuta.
+
+2025-10-03 20:56:38 [INFO] - Servidor finalizado.
+2025-10-03 20:56:38 [INFO] - Handler para o socket 5 destruído.

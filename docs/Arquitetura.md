@@ -83,3 +83,51 @@ sequenceDiagram
     
     deactivate Handler A
 ```
+
+### Diagrama de Classes:
+
+```mermaid
+classDiagram
+    class Server {
+        -port: int
+        -server_socket: int
+        -is_running: bool
+        -clients: vector~shared_ptr~ClientHandler~~
+        -clients_mutex: mutex
+        +Server(int port)
+        +start()
+        +broadcastMessage(string, int)
+        +removeClient(int)
+        -acceptClients()
+    }
+
+    class ClientHandler {
+        -client_socket: int
+        -server: Server*
+        -handler_thread: thread
+        -is_running: bool
+        +ClientHandler(int, Server*)
+        +start()
+        +sendMessage(string)
+        +getSocket(): int
+        -handleMessages()
+    }
+
+    class Logger {
+        <<Singleton>>
+        -message_queue: queue~string~
+        -mtx: mutex
+        -cv: condition_variable
+        -writer_thread: thread
+        +getInstance(): Logger&
+        +start(string)
+        +stop()
+        +log(LogLevel, string)
+        -processQueue()
+    }
+
+    Server "1" *-- "0..*" ClientHandler : contém
+    ClientHandler ..> Server : usa
+    Server ..> Logger : usa
+    ClientHandler ..> Logger : usa
+```

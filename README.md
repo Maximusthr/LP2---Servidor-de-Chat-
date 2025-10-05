@@ -17,7 +17,7 @@ Sistema de chat cliente-servidor multi-threaded desenvolvido em C++ para a disci
   - **Gerenciamento de Clientes**: Servidor gerencia a conexão, desconexão e identificação de múltiplos clientes.
   - **Logging Integrado**: Eventos do servidor (conexões, mensagens) são registrados pela `libtslog`.
 
-### 🔄 Próxima Etapa: Finalização e Relatório
+### ✅  Etapa 3: Finalização e Relatório (Concluída)
 
   - Refinamento do código e tratamento de casos extremos.
   - Elaboração do relatório final, incluindo a análise de concorrência com IA.
@@ -115,7 +115,7 @@ Para facilitar os testes, dois scripts estão disponíveis:
 │   └── test_logger.cpp           # Teste de estresse para o Logger
 ├── docs/                         # Documentação
 │   └── ARQUITETURA.md
-|── logs                          # Logs gerados
+|── logs/                         # Logs gerados
 ├── build/                        # (Ignorado pelo Git)
 ├── bin/                          # (Ignorado pelo Git)
 ├── .gitignore
@@ -132,3 +132,10 @@ Para facilitar os testes, dois scripts estão disponíveis:
 2.  **Monitor Pattern (Producer-Consumer)** (`Logger`): Coordena o acesso concorrente à fila de logs de forma segura e eficiente.
 3.  **RAII (Resource Acquisition Is Initialization)** (`Server`, `ClientHandler`): Garante o gerenciamento automático de recursos como sockets e threads, prevenindo vazamentos.
 
+
+
+## 📹 Extra: Demonstração em Vídeo
+
+Um vídeo curto de demonstração foi gravado para mostrar o sistema em funcionamento, incluindo a inicialização do servidor, a conexão de múltiplos clientes e o broadcast de mensagens em tempo real.
+
+**[>> Assista ao vídeo da demonstração aqui <<](https://youtu.be/pN5Hb6fvhfk)**

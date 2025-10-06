@@ -115,6 +115,7 @@ Para facilitar os testes, dois scripts estão disponíveis:
 │   └── test_logger.cpp           # Teste de estresse para o Logger
 ├── docs/                         # Documentação
 │   └── ARQUITETURA.md
+|   └── Diagrama-Arquitetura.png
 |── logs/                         # Logs gerados
 ├── build/                        # (Ignorado pelo Git)
 ├── bin/                          # (Ignorado pelo Git)

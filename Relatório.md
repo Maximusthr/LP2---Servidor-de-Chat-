@@ -8,7 +8,6 @@
 ## 1. Introdução
 
 Com a proposta de desenvolver um Servidor de Chat Multiusuário TCP, este relatório descreve o processo de criação, identificação de falhas, testes, integração do sistema e o devido uso da inteligência artificial (IA) em todo o processo. O sistema foi realizado em um total de 3 etapas.  
-A IA utilizada para auxiliar na criação e análise de erros do sistema, foi o "Gemini".
 
 ### 1.1 Sistema
 
@@ -22,7 +21,15 @@ O sistema possui:
 - Histórico de mensagens thread-safe (monitor)
 - Entre outros
 
-### 1.2 Mapeamento de Requisitos para o Código
+### 1.2 Visão Geral da Arquitetura do sistema
+
+A imagem a seguir mostra o diagrama de arquitetura da aplicação:
+
+![Arquitetura](./docs/Diagrama-Arquitetura.png)
+
+*Figura 1: Arquitetura Lógica e Padrões de Concorrência do Sistema de Chat.*
+
+### 1.3 Mapeamento de Requisitos para o Código
 
 Esta seção mapeia os requisitos obrigatórios do projeto, tanto os gerais quanto os específicos do Tema A, para as partes correspondentes no código-fonte.
 
